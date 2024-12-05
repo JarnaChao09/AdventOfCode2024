@@ -2,7 +2,7 @@ import kotlin.io.path.Path
 import kotlin.io.path.readText
 
 fun main() {
-    val input = Path("src/input/Day05_Test.txt").readText().trim().split("\n\n")
+    val input = Path("src/input/Day05.txt").readText().trim().split("\n\n")
 
     val (rules, updates) = input.map { it.split("\n") }
 
@@ -14,6 +14,7 @@ fun main() {
         firstToSecond[f] = firstToSecond.getOrElse(f) { emptyList() } + s
     }
 
+    /* old solution
     fun isOrdered(row: List<Int>): Boolean {
         var ordered = true
         for ((ruleKey, ruleValues) in firstToSecond) {
@@ -30,7 +31,9 @@ fun main() {
         }
 
         return ordered
-    }
+    } */
+
+    fun isOrdered(row: List<Int>): Boolean = row.zipWithNext().all { (a, b) -> b in (firstToSecond[a] ?: emptyList()) }
 
     val (part1, part2) = run {
         updates.fold(0 to 0) { (f, s), it ->
