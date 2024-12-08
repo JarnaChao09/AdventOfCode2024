@@ -16,7 +16,7 @@ fun main() {
             }
         }
     }
-    
+
     val (part1, part2) = run {
         val total = mutableSetOf<Pair<Int, Int>>()
         val total2 = mutableSetOf<Pair<Int, Int>>()
@@ -42,6 +42,7 @@ fun main() {
                                 if (r to c !in allNodes) {
                                     total2.add(r to c)
                                 }
+                                
                                 val dist1 = (locationR - r).absoluteValue + (locationC - c).absoluteValue
                                 val dist2 = (locR - r).absoluteValue + (locC - c).absoluteValue
                                 if (dist1 == dist2 * 2 || dist2 == dist1 * 2) {
